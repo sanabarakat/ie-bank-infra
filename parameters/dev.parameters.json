@@ -6,7 +6,7 @@
             "value": "nonprod"
         },
         "postgreSQLServerName": {
-            "value": "sbarakat-dbsr-dev"
+            "value": "sbarakat-dbsrv-dev"
         },
         "postgreSQLDatabaseName": {
             "value": "sbarakat-db-dev"
