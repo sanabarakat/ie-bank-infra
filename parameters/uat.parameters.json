@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "environmentType": {
-            "value": "nonprod"
+            "value": "prod"
         },
         "postgreSQLServerName": {
             "value": "sbarakat-dbsrv-uat"
@@ -21,7 +21,7 @@
             "value": "sbarakat-fe-uat"
         },
         "location": {
-            "value": "West US 3"
+            "value": "Brazil South"
         }
     }
 }
