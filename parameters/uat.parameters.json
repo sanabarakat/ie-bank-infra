@@ -21,10 +21,10 @@
             "value": "sbarakat-fe-uat"
         },
         "azureMonitorName": {
-            "value": "sbarakat-am-dev"
+            "value": "sbarakat-am-uat"
           },
         "appInsightsName": {
-            "value": "sbarakat-ai-dev"
+            "value": "sbarakat-ai-uat"
           },
         "location": {
             "value": "Brazil South"
