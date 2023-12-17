@@ -3,28 +3,28 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "environmentType": {
-            "value": "nonprod"
+            "value": "prod"
         },
         "postgreSQLServerName": {
-            "value": "sbarakat-dbsrv-dev"
+            "value": "sbarakat-dbsrv-prod"
         },
         "postgreSQLDatabaseName": {
-            "value": "sbarakat-db-dev"
+            "value": "sbarakat-db-prod"
         },
         "appServicePlanName": {
-            "value": "sbarakat-asp-dev"
+            "value": "sbarakat-asp-prod"
         },
         "appServiceAPIAppName": {
-            "value": "sbarakat-be-dev"
+            "value": "sbarakat-be-prod"
         },
         "appServiceAppName": {
-            "value": "sbarakat-fe-dev"
+            "value": "sbarakat-fe-prod"
         },
         "azureMonitorName": {
-            "value": "sbarakat-am-dev"
+            "value": "sbarakat-am-prod"
           },
         "appInsightsName": {
-            "value": "sbarakat-ai-dev"
+            "value": "sbarakat-ai-prod"
           },
         "location": {
             "value": "Brazil South"

@@ -2,16 +2,18 @@ name: ie-bank-infra
 
 on: 
   push:
-    branches: ["sana*"]
+    branches: ["sanabarakat"]
   pull_request:
-    branches: [ "sana*" ]
+    branches: [ "sanabarakat" ]
   workflow_dispatch:
 
 env:
   RESOURCE_GROUP_DEV: aguadamillas_students_1
   RESOURCE_GROUP_UAT: aguadamillas_students_1
+  RESOURCE_GROUP_PROD: aguadamillas_students_1
   SUBSCRIPTION_ID_DEV: e0b9cada-61bc-4b5a-bd7a-52c606726b3b
   SUBSCRIPTION_ID_UAT: e0b9cada-61bc-4b5a-bd7a-52c606726b3b
+  SUBSCRIPTION_ID_PROD: e0b9cada-61bc-4b5a-bd7a-52c606726b3b
   USER_ALIAS: sbarakat
 
 jobs:
@@ -61,7 +63,7 @@ jobs:
         deploymentName: ${{ env.USER_ALIAS }}
 
   deploy-uat:
-      if: github.ref == 'refs/heads/uat'
+  #    if: github.ref == 'refs/heads/uat'
       runs-on: ubuntu-latest
       needs: [build, deploy-dev]
       environment:
@@ -94,3 +96,36 @@ jobs:
           parameters: ./parameters/uat.parameters.json appServiceAPIEnvVarENV=${{ env.ENV }} appServiceAPIEnvVarDBHOST=${{ env.DBHOST }} appServiceAPIEnvVarDBNAME=${{ env.DBNAME }} appServiceAPIEnvVarDBPASS=${{ secrets.DBPASS }} appServiceAPIDBHostDBUSER=${{ secrets.DBUSER }} appServiceAPIDBHostFLASK_APP=${{ env.FLASK_APP }} appServiceAPIDBHostFLASK_DEBUG=${{ env.FLASK_DEBUG }}
           deploymentName: ${{env.USER_ALIAS}}
 
+    deploy-prod:
+    #    if: github.ref == 'refs/heads/prod'
+        runs-on: ubuntu-latest
+        needs: [build, deploy-dev, deploy-uat]
+        environment:
+          name: 'Production'
+        env:
+          ENV: prod
+          DBHOST: sbarakat-dbsrv-prod.postgres.database.azure.com
+          DBNAME: sbarakat-db-prod
+          FLASK_APP: app.py
+          FLASK_DEBUG: 1
+            
+        steps:
+  
+          # Checkout code
+        - uses: actions/checkout@main
+        
+          # Log into AzureS
+        - uses: azure/login@v1
+          with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+  
+  
+      # Deploy Bicep file
+        - name: deploy
+          uses: azure/arm-deploy@v1
+          with:
+            subscriptionId: ${{ env.SUBSCRIPTION_ID_UAT }}
+            resourceGroupName: ${{ env.RESOURCE_GROUP_UAT }}
+            template: ./main.bicep
+            parameters: ./parameters/prod.parameters.json appServiceAPIEnvVarENV=${{ env.ENV }} appServiceAPIEnvVarDBHOST=${{ env.DBHOST }} appServiceAPIEnvVarDBNAME=${{ env.DBNAME }} appServiceAPIEnvVarDBPASS=${{ secrets.DBPASS }} appServiceAPIDBHostDBUSER=${{ secrets.DBUSER }} appServiceAPIDBHostFLASK_APP=${{ env.FLASK_APP }} appServiceAPIDBHostFLASK_DEBUG=${{ env.FLASK_DEBUG }}
+            deploymentName: ${{env.USER_ALIAS}}
