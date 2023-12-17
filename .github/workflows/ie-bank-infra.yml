@@ -1,6 +1,13 @@
 name: ie-bank-infra
 
-on: [push, workflow_dispatch]
+on: 
+  push:
+    branches:
+      - main
+      - marc_chebli
+  pull_request:
+    branches:
+      - main
 
 env:
   RESOURCE_GROUP_DEV: aguadamillas_students_1
@@ -20,6 +27,13 @@ jobs:
       # Lint Bicep code 
     - name: Run Bicep linter
       run: az bicep build --file ./main.bicep
+
+    - name: Create Pull Request
+      uses: cheblimarc4/create-pull-request@v5
+      with: 
+          title: 'marc Automated pull request'
+          head: 'marc_chebli'
+          base: 'main'
 
   deploy-dev:
 #   if: github.ref == 'refs/heads/dev'
