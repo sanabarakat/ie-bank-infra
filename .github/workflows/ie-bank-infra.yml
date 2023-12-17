@@ -2,7 +2,9 @@ name: ie-bank-infra
 
 on: 
   push:
-    branches: ['main']
+    branches: 
+      - main
+      - mariana
   pull_request:
     branches: ['main']
   workflow_dispatch:
@@ -24,6 +26,9 @@ jobs:
       # Lint Bicep code 
     - name: Run Bicep linter
       run: az bicep build --file ./main.bicep
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
 
   deploy-dev:
 #   if: github.ref == 'refs/heads/dev'
