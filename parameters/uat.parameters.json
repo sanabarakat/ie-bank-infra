@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "environmentType": {
-            "value": "prod"
+            "value": "nonprod"
         },
         "postgreSQLServerName": {
             "value": "juni-dbsrv-uat"
@@ -28,6 +28,9 @@
         },
         "location": {
             "value": "Qatar Central"
+        },
+        "aiapi":{
+            "value": "juni-aiapi-uat"
         }
     }
 }
