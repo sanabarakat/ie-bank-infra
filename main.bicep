@@ -2,6 +2,7 @@
 @allowed([
   'nonprod'
   'prod'
+  'aiapi'
 ])
 param environmentType string = 'nonprod'
 @sys.description('The PostgreSQL Server name')
@@ -45,6 +46,8 @@ param appServiceAPIDBHostDBUSER string
 param appServiceAPIDBHostFLASK_APP string
 @sys.description('The value for the environment variable FLASK_DEBUG')
 param appServiceAPIDBHostFLASK_DEBUG string
+
+param aiapi string
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
@@ -126,3 +129,14 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
     WorkspaceResourceId: resourceId('Microsoft.OperationalInsights/workspaces', azureMonitorName)
   }
 } 
+
+
+resource appInsightsAPI 'Microsoft.Insights/components@2020-02-02' = {
+  name: aiapi
+  location: location
+  kind: 'web'
+  properties: {
+    Application_Type: 'web'
+    WorkspaceResourceId: resourceId('Microsoft.OperationalInsights/workspaces', azureMonitorName)
+  }
+}
