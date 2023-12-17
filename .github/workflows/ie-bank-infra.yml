@@ -1,6 +1,13 @@
 name: ie-bank-infra
 
-on: [push, workflow_dispatch]
+on: 
+  push:
+    branches:
+      - main
+      - KarimGhazzi
+  pull_request:
+    branches:
+      - main
 
 env:
   RESOURCE_GROUP_DEV: aguadamillas_students_1
