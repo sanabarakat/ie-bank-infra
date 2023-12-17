@@ -39,8 +39,8 @@ jobs:
     
     env:
       ENV: dev
-      DBHOST: stest-dbsrv-dev.postgres.database.azure.com
-      DBNAME: stest-db-dev
+      DBHOST: sbarakat-dbsrv-dev.postgres.database.azure.com
+      DBNAME: sbarakat-db-dev
       FLASK_APP: app.py
       FLASK_DEBUG: 1
 
@@ -72,8 +72,8 @@ jobs:
         name: 'User Acceptance Testing'
       env:
         ENV: uat
-        DBHOST: stest-dbsrv-uat.postgres.database.azure.com
-        DBNAME: stest-db-uat
+        DBHOST: sbarakat-dbsrv-uat.postgres.database.azure.com
+        DBNAME: sbarakat-db-uat
         FLASK_APP: app.py
         FLASK_DEBUG: 1
           
@@ -106,8 +106,8 @@ jobs:
         name: 'Production'
       env:
         ENV: prod
-        DBHOST: stest-dbsrv-prod.postgres.database.azure.com
-        DBNAME: stest-db-prod
+        DBHOST: sbarakat-dbsrv-prod.postgres.database.azure.com
+        DBNAME: sbarakat-db-prod
         FLASK_APP: app.py
         FLASK_DEBUG: 1
           
