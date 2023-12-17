@@ -22,10 +22,10 @@
         },
         "azureMonitorName": {
             "value": "juni-am-uat"
-          },
+        },
         "appInsightsName": {
             "value": "juni-ai-uat"
-          },
+        },
         "location": {
             "value": "Qatar Central"
         }
