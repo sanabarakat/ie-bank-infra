@@ -6,28 +6,28 @@
             "value": "nonprod"
         },
         "postgreSQLServerName": {
-            "value": "sbarakat-dbsrv-dev"
+            "value": "sbarakatz-dbsrv-dev"
         },
         "postgreSQLDatabaseName": {
-            "value": "sbarakat-db-dev"
+            "value": "sbarakatz-db-dev"
         },
         "appServicePlanName": {
-            "value": "sbarakat-asp-dev"
+            "value": "sbarakatz-asp-dev"
         },
         "appServiceAPIAppName": {
-            "value": "sbarakat-be-dev"
+            "value": "sbarakatz-be-dev"
         },
         "appServiceAppName": {
-            "value": "sbarakat-fe-dev"
+            "value": "sbarakatz-fe-dev"
         },
         "azureMonitorName": {
-            "value": "sbarakat-am-dev"
+            "value": "sbarakatz-am-dev"
           },
         "appInsightsName": {
-            "value": "sbarakat-ai-dev"
+            "value": "sbarakatz-ai-dev"
           },
         "location": {
-            "value": "Norway East"
+            "value": "eastasia"
         }
     }
 }
