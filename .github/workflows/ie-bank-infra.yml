@@ -2,9 +2,11 @@ name: ie-bank-infra
 
 on: 
   push:
-    branches: ["sanabarakat"]
+    branches: 
+      - sanabarakat
+      - main
   pull_request:
-    branches: [ "sanabarakat" ]
+    branches: [ "main", "sanabarakat" ]
   workflow_dispatch:
 
 env:
@@ -96,36 +98,36 @@ jobs:
           parameters: ./parameters/uat.parameters.json appServiceAPIEnvVarENV=${{ env.ENV }} appServiceAPIEnvVarDBHOST=${{ env.DBHOST }} appServiceAPIEnvVarDBNAME=${{ env.DBNAME }} appServiceAPIEnvVarDBPASS=${{ secrets.DBPASS }} appServiceAPIDBHostDBUSER=${{ secrets.DBUSER }} appServiceAPIDBHostFLASK_APP=${{ env.FLASK_APP }} appServiceAPIDBHostFLASK_DEBUG=${{ env.FLASK_DEBUG }}
           deploymentName: ${{env.USER_ALIAS}}
 
-    deploy-prod:
-    #    if: github.ref == 'refs/heads/prod'
-        runs-on: ubuntu-latest
-        needs: [build, deploy-dev, deploy-uat]
-        environment:
-          name: 'Production'
-        env:
-          ENV: prod
-          DBHOST: sbarakat-dbsrv-prod.postgres.database.azure.com
-          DBNAME: sbarakat-db-prod
-          FLASK_APP: app.py
-          FLASK_DEBUG: 1
-            
-        steps:
-  
-          # Checkout code
-        - uses: actions/checkout@main
-        
-          # Log into AzureS
-        - uses: azure/login@v1
-          with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}
-  
-  
-      # Deploy Bicep file
-        - name: deploy
-          uses: azure/arm-deploy@v1
-          with:
-            subscriptionId: ${{ env.SUBSCRIPTION_ID_UAT }}
-            resourceGroupName: ${{ env.RESOURCE_GROUP_UAT }}
-            template: ./main.bicep
-            parameters: ./parameters/prod.parameters.json appServiceAPIEnvVarENV=${{ env.ENV }} appServiceAPIEnvVarDBHOST=${{ env.DBHOST }} appServiceAPIEnvVarDBNAME=${{ env.DBNAME }} appServiceAPIEnvVarDBPASS=${{ secrets.DBPASS }} appServiceAPIDBHostDBUSER=${{ secrets.DBUSER }} appServiceAPIDBHostFLASK_APP=${{ env.FLASK_APP }} appServiceAPIDBHostFLASK_DEBUG=${{ env.FLASK_DEBUG }}
-            deploymentName: ${{env.USER_ALIAS}}
+  deploy-prod:
+  #    if: github.ref == 'refs/heads/prod'
+      runs-on: ubuntu-latest
+      needs: [build, deploy-dev, deploy-uat]
+      environment:
+        name: 'Production'
+      env:
+        ENV: prod
+        DBHOST: sbarakat-dbsrv-prod.postgres.database.azure.com
+        DBNAME: sbarakat-db-prod
+        FLASK_APP: app.py
+        FLASK_DEBUG: 1
+          
+      steps:
+
+        # Checkout code
+      - uses: actions/checkout@main
+      
+        # Log into AzureS
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+
+    # Deploy Bicep file
+      - name: deploy
+        uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{ env.SUBSCRIPTION_ID_UAT }}
+          resourceGroupName: ${{ env.RESOURCE_GROUP_UAT }}
+          template: ./main.bicep
+          parameters: ./parameters/prod.parameters.json appServiceAPIEnvVarENV=${{ env.ENV }} appServiceAPIEnvVarDBHOST=${{ env.DBHOST }} appServiceAPIEnvVarDBNAME=${{ env.DBNAME }} appServiceAPIEnvVarDBPASS=${{ secrets.DBPASS }} appServiceAPIDBHostDBUSER=${{ secrets.DBUSER }} appServiceAPIDBHostFLASK_APP=${{ env.FLASK_APP }} appServiceAPIDBHostFLASK_DEBUG=${{ env.FLASK_DEBUG }}
+          deploymentName: ${{env.USER_ALIAS}}
