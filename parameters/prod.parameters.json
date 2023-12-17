@@ -6,25 +6,25 @@
             "value": "prod"
         },
         "postgreSQLServerName": {
-            "value": "juni-dbsrv-dev"
+            "value": "juni-dbsrv-prod"
         },
         "postgreSQLDatabaseName": {
-            "value": "juni-db-dev"
+            "value": "juni-db-prod"
         },
         "appServicePlanName": {
-            "value": "juni-asp-dev"
+            "value": "juni-asp-prod"
         },
         "appServiceAPIAppName": {
-            "value": "juni-be-dev"
+            "value": "juni-be-prod"
         },
         "appServiceAppName": {
-            "value": "juni-fe-dev"
+            "value": "juni-fe-prod"
         },
         "azureMonitorName": {
-            "value": "juni-am-dev"
+            "value": "juni-am-prod"
           },
         "appInsightsName": {
-            "value": "juni-ai-dev"
+            "value": "juni-ai-prod"
           },
         "location": {
             "value": "Qatar Central"
