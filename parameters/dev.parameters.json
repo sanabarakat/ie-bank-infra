@@ -28,6 +28,10 @@
           },
         "location": {
             "value": "Qatar Central"
+        },
+        "aiapi":{
+            "value": "juni-aiapi-dev"
+        }
         }
     }
 }
