@@ -6,25 +6,25 @@
             "value": "prod"
         },
         "postgreSQLServerName": {
-            "value": "sbarakat-dbsrv-uat"
+            "value": "juni-dbsrv-uat"
         },
         "postgreSQLDatabaseName": {
-            "value": "sbarakat-db-uat"
+            "value": "juni-db-uat"
         },
         "appServicePlanName": {
-            "value": "sbarakat-asp-uat"
+            "value": "juni-asp-uat"
         },
         "appServiceAPIAppName": {
-            "value": "sbarakat-be-uat"
+            "value": "juni-be-uat"
         },
         "appServiceAppName": {
-            "value": "sbarakat-fe-uat"
+            "value": "juni-fe-uat"
         },
         "azureMonitorName": {
-            "value": "sbarakat-am-uat"
+            "value": "juni-am-uat"
           },
         "appInsightsName": {
-            "value": "sbarakat-ai-uat"
+            "value": "juni-ai-uat"
           },
         "location": {
             "value": "Qatar Central"

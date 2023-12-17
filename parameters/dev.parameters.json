@@ -6,25 +6,25 @@
             "value": "nonprod"
         },
         "postgreSQLServerName": {
-            "value": "sbarakat-dbsrv-dev"
+            "value": "juni-dbsrv-dev"
         },
         "postgreSQLDatabaseName": {
-            "value": "sbarakat-db-dev"
+            "value": "juni-db-dev"
         },
         "appServicePlanName": {
-            "value": "sbarakat-asp-dev"
+            "value": "juni-asp-dev"
         },
         "appServiceAPIAppName": {
-            "value": "sbarakat-be-dev"
+            "value": "juni-be-dev"
         },
         "appServiceAppName": {
-            "value": "sbarakat-fe-dev"
+            "value": "juni-fe-dev"
         },
         "azureMonitorName": {
-            "value": "sbarakat-am-dev"
+            "value": "juni-am-dev"
           },
         "appInsightsName": {
-            "value": "sbarakat-ai-dev"
+            "value": "juni-ai-dev"
           },
         "location": {
             "value": "Qatar Central"
