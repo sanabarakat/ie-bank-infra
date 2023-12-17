@@ -29,7 +29,7 @@ jobs:
       run: az bicep build --file ./main.bicep
 
     - name: Create Pull Request
-      uses: cheblimarc4/create-pull-request@v5
+      uses: ie-bank-infra/create-pull-request@v5
       with: 
           title: 'marc Automated pull request'
           head: 'marc_chebli'
