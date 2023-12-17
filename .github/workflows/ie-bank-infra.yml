@@ -1,6 +1,11 @@
 name: ie-bank-infra
 
-on: [push, workflow_dispatch]
+on: 
+  push:
+    branches: [ "main", "sana*"]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
 
 env:
   RESOURCE_GROUP_DEV: aguadamillas_students_1
@@ -22,7 +27,7 @@ jobs:
       run: az bicep build --file ./main.bicep
 
   deploy-dev:
-#   if: github.ref == 'refs/heads/dev'
+    if: github.ref == 'refs/heads/sana*' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: build
     environment:
@@ -56,7 +61,7 @@ jobs:
         deploymentName: ${{ env.USER_ALIAS }}
 
   deploy-uat:
-  #   if: github.ref == 'refs/heads/dev'
+      if: github.ref == 'refs/heads/uat'
       runs-on: ubuntu-latest
       needs: [build, deploy-dev]
       environment:
