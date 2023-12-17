@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "environmentType": {
+            "value": "prod"
+        },
+        "postgreSQLServerName": {
+            "value": "juni-dbsrv-dev"
+        },
+        "postgreSQLDatabaseName": {
+            "value": "juni-db-dev"
+        },
+        "appServicePlanName": {
+            "value": "juni-asp-dev"
+        },
+        "appServiceAPIAppName": {
+            "value": "juni-be-dev"
+        },
+        "appServiceAppName": {
+            "value": "juni-fe-dev"
+        },
+        "azureMonitorName": {
+            "value": "juni-am-dev"
+          },
+        "appInsightsName": {
+            "value": "juni-ai-dev"
+          },
+        "location": {
+            "value": "Qatar Central"
+        }
+    }
+}
