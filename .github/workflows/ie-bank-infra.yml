@@ -2,7 +2,7 @@ name: ie-bank-infra
 
 on: 
   push:
-    branches: [ "main", "sana*"]
+    branches: ["sana*"]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
@@ -27,7 +27,7 @@ jobs:
       run: az bicep build --file ./main.bicep
 
   deploy-dev:
-    if: github.ref == 'refs/heads/sana*' || github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/sana*'
     runs-on: ubuntu-latest
     needs: build
     environment:
