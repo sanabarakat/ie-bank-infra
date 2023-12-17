@@ -6,28 +6,28 @@
             "value": "nonprod"
         },
         "postgreSQLServerName": {
-            "value": "sbarakat-dbsrv-dev"
+            "value": "stest-dbsrv-dev"
         },
         "postgreSQLDatabaseName": {
-            "value": "sbarakat-db-dev"
+            "value": "stest-db-dev"
         },
         "appServicePlanName": {
-            "value": "sbarakat-asp-dev"
+            "value": "stest-asp-dev"
         },
         "appServiceAPIAppName": {
-            "value": "sbarakat-be-dev"
+            "value": "stest-be-dev"
         },
         "appServiceAppName": {
-            "value": "sbarakat-fe-dev"
+            "value": "stest-fe-dev"
         },
         "azureMonitorName": {
-            "value": "sbarakat-am-dev"
+            "value": "stest-am-dev"
           },
         "appInsightsName": {
-            "value": "sbarakat-ai-dev"
+            "value": "stest-ai-dev"
           },
         "location": {
-            "value": "Brazil South"
+            "value": "eastasia"
         }
     }
 }

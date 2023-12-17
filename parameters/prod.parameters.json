@@ -6,25 +6,25 @@
             "value": "prod"
         },
         "postgreSQLServerName": {
-            "value": "stest-dbsrv-uat"
+            "value": "stest-dbsrv-prod"
         },
         "postgreSQLDatabaseName": {
-            "value": "stest-db-uat"
+            "value": "stest-db-prod"
         },
         "appServicePlanName": {
-            "value": "stest-asp-uat"
+            "value": "stest-asp-prod"
         },
         "appServiceAPIAppName": {
-            "value": "stest-be-uat"
+            "value": "stest-be-prod"
         },
         "appServiceAppName": {
-            "value": "stest-fe-uat"
+            "value": "stest-fe-prod"
         },
         "azureMonitorName": {
-            "value": "stest-am-uat"
+            "value": "stest-am-prod"
           },
         "appInsightsName": {
-            "value": "stest-ai-uat"
+            "value": "stest-ai-prod"
           },
         "location": {
             "value": "eastasia"

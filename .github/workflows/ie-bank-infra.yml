@@ -12,8 +12,10 @@ on:
 env:
   RESOURCE_GROUP_DEV: aguadamillas_students_1
   RESOURCE_GROUP_UAT: aguadamillas_students_1
+  RESOURCE_GROUP_PROD: aguadamillas_students_1
   SUBSCRIPTION_ID_DEV: e0b9cada-61bc-4b5a-bd7a-52c606726b3b
   SUBSCRIPTION_ID_UAT: e0b9cada-61bc-4b5a-bd7a-52c606726b3b
+  SUBSCRIPTION_ID_PROD: e0b9cada-61bc-4b5a-bd7a-52c606726b3b
   USER_ALIAS: sbarakat
 
 jobs:
@@ -37,8 +39,8 @@ jobs:
     
     env:
       ENV: dev
-      DBHOST: sbarakat-dbsrv-dev.postgres.database.azure.com
-      DBNAME: sbarakat-db-dev
+      DBHOST: stest-dbsrv-dev.postgres.database.azure.com
+      DBNAME: stest-db-dev
       FLASK_APP: app.py
       FLASK_DEBUG: 1
 
@@ -70,8 +72,42 @@ jobs:
         name: 'User Acceptance Testing'
       env:
         ENV: uat
-        DBHOST: sbarakat-dbsrv-uat.postgres.database.azure.com
-        DBNAME: sbarakat-db-uat
+        DBHOST: stest-dbsrv-uat.postgres.database.azure.com
+        DBNAME: stest-db-uat
+        FLASK_APP: app.py
+        FLASK_DEBUG: 1
+          
+      steps:
+
+        # Checkout code
+      - uses: actions/checkout@main
+      
+        # Log into AzureS
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+
+    # Deploy Bicep file
+      - name: deploy
+        uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{ env.SUBSCRIPTION_ID_UAT }}
+          resourceGroupName: ${{ env.RESOURCE_GROUP_UAT }}
+          template: ./main.bicep
+          parameters: ./parameters/uat.parameters.json appServiceAPIEnvVarENV=${{ env.ENV }} appServiceAPIEnvVarDBHOST=${{ env.DBHOST }} appServiceAPIEnvVarDBNAME=${{ env.DBNAME }} appServiceAPIEnvVarDBPASS=${{ secrets.DBPASS }} appServiceAPIDBHostDBUSER=${{ secrets.DBUSER }} appServiceAPIDBHostFLASK_APP=${{ env.FLASK_APP }} appServiceAPIDBHostFLASK_DEBUG=${{ env.FLASK_DEBUG }}
+          deploymentName: ${{env.USER_ALIAS}}
+
+  deploy-prod:
+  #   if: github.ref == 'refs/heads/dev'
+      runs-on: ubuntu-latest
+      needs: [build, deploy-dev, deploy-uat]
+      environment:
+        name: 'Production'
+      env:
+        ENV: prod
+        DBHOST: stest-dbsrv-prod.postgres.database.azure.com
+        DBNAME: stest-db-prod
         FLASK_APP: app.py
         FLASK_DEBUG: 1
           
