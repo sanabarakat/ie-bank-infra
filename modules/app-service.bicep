@@ -13,7 +13,6 @@ param appServiceAPIDBHostFLASK_DEBUG string
 @allowed([
   'nonprod'
   'prod'
-  'juni-aiapi-dev'
 ])
 param environmentType string
 

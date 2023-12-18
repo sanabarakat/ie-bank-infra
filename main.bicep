@@ -2,7 +2,6 @@
 @allowed([
   'nonprod'
   'prod'
-  'juni-aiapi-dev'
 ])
 param environmentType string = 'nonprod'
 @sys.description('The PostgreSQL Server name')
